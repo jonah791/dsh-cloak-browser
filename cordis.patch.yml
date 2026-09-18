@@ -1,0 +1,4 @@
+- insert:
+    - id: agent-cloak-browser
+      name: dsh-cloak-browser
+      config: {}
