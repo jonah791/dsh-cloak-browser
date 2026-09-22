@@ -18,6 +18,10 @@ export const Config = z.object({
 })
 
 export function apply(ctx: Context, config: Config): void {
+  // enabled 必须在 apply() 里被消费：显式 false 时挂载但不注册任何工具。
+  // 只认 === false（未配置/undefined 视为启用），避免把「没写」误判成「关掉」（t-ef0af5ff）。
+  if (config.enabled === false) return
+
   const logger = ctx.logger("agent-cloak-browser")
 
     ctx.tools.register(defineTool({
