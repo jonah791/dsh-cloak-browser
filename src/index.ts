@@ -57,7 +57,7 @@ export function apply(ctx: Context, config: Config): void {
 
   ctx.tools.register(defineTool({
     name: "cloak_status",
-    description: "查 CloakBrowser 状态（只认我自己的安装目录，不碰主人的实例）",
+    description: "查 CloakBrowser 状态：① 我自己的实例（只认我的安装目录，不碰主人的实例）② 全机只读巡检（复用唯一判据 scripts/orphan-process-audit.mjs，报「父进程已死 ∧ 正在烧核」的进程）。**只报告，不处置**——stop 的范围一字未变。",
     parameters: {},
     output: {
       schema: {"type":"object","additionalProperties":false,"properties":{"ok":{"type":"boolean","required":true},"text":{"type":"string"}}},
